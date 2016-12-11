@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        form{
+            width:200px;
+            margin:30px auto;
+        }
+
+    </style>
+</head>
+<body>
+    <form id="formtest">
+        <div class="form-group">
+            <label for="username">用户名</label>
+            <input type="text" name="username" id="username" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" id="password" name="password" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="confirmation">确认密码</label>
+            <input type="password" id="confirmation" name="password" class="form-control">
+        </div>
+        <button type="submit"> 注册</button>
+    </form>
+
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#formtest").validate({
+                rules:{
+                    username:{
+                        required:true,
+                        rangelength:[4,10]
+                    },
+                    password:{
+                        required:true,
+                        minlength:6,
+                        maxlength:10
+                    },
+                    confirmation:{
+                        equalTo:"#password"
+                    }
+                },
+                messages:{
+                    username:{
+                        required:"用户名不能为空",
+                        rangelength:"用户名长度应在4-10之间"
+                    },
+                    password:{
+                        required:"密码不能为空",
+                        minlength:"密码长度至少为6位",
+                        maxlength:"密码长度最多为20位"
+                    },
+                    confirmation:{
+                        equalTo:"两次密码输入不一致"
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
